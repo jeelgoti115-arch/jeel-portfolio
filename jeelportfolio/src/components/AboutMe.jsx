@@ -6,14 +6,13 @@ const AboutMe = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="py-20 px-6 max-w-6xl mx-auto overflow-hidden"
     >
       <motion.h2 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="text-4xl font-bold text-white mb-12 text-center"
       >
         About Me
@@ -21,10 +20,10 @@ const AboutMe = () => {
       
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="relative group"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
@@ -38,10 +37,10 @@ const AboutMe = () => {
         </motion.div>
         
         <motion.div 
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="space-y-6"
         >
           <h3 className="text-2xl font-semibold text-slate-100">Who am I?</h3>
@@ -70,7 +69,7 @@ const AboutMe = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

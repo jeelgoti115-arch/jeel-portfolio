@@ -9,32 +9,31 @@ const Introduction = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="min-h-[80vh] flex flex-col justify-center items-center text-center px-6"
     >
       <div className="w-full max-w-4xl">
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="text-5xl md:text-7xl font-extrabold text-white mb-6"
         >
           Hello, I'm <span className="text-indigo-400 drop-shadow-[0_0_20px_rgba(129,140,248,0.3)]">Jeel Goti</span>
         </motion.h1>
         
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           A passionate developer dedicated to building beautiful, functional, and user-centric digital experiences.
         </motion.p>
         
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="flex gap-4 justify-center"
         >
           <motion.button 

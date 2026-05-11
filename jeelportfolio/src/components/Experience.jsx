@@ -21,7 +21,6 @@ const Experience = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="py-20 px-6 max-w-4xl mx-auto"
     >
       <motion.h2 
@@ -40,14 +39,14 @@ const Experience = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
             className="relative pl-8 border-l-2 border-indigo-900"
           >
             <motion.div 
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: (index * 0.2) + 0.3, type: "spring", stiffness: 200 }}
+              transition={{ delay: (index * 0.1) + 0.15, type: "spring", stiffness: 200 }}
               className="absolute -left-[9px] top-0 w-4 h-4 bg-indigo-500 rounded-full border-4 border-slate-950"
             ></motion.div>
             

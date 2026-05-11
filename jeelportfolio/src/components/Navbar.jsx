@@ -44,9 +44,9 @@ const Navbar = ({ onMenuClick }) => {
           return (
             <motion.a 
               key={item}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + (idx * 0.1) }}
+              transition={{ delay: 0.2 + (idx * 0.05) }}
               href={links[item]} 
               target={item !== 'Resume' ? "_blank" : undefined}
               rel="noopener noreferrer"

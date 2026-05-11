@@ -19,13 +19,13 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
   };
 
@@ -33,7 +33,6 @@ const Skills = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="py-20 px-6 max-w-6xl mx-auto"
     >
       <motion.h2 
@@ -71,7 +70,7 @@ const Skills = () => {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

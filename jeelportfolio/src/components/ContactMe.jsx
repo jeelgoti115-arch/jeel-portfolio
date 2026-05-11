@@ -6,34 +6,33 @@ const ContactMe = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="py-20 px-6 max-w-4xl mx-auto text-center"
     >
       <motion.h2 
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.3 }}
         className="text-4xl font-bold text-white mb-6"
       >
         Let's Connect
       </motion.h2>
       
       <motion.p 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
         className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto"
       >
         I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, my inbox is always open!
       </motion.p>
       
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
         className="flex flex-wrap justify-center gap-6 mb-12"
       >
         <motion.a 
@@ -70,10 +69,10 @@ const ContactMe = () => {
       </motion.div>
 
       <motion.form 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
         className="max-w-xl mx-auto space-y-4 bg-slate-900 p-8 rounded-3xl shadow-2xl border border-slate-800"
       >
         <div className="grid md:grid-cols-2 gap-4">

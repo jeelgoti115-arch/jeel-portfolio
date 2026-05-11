@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
-import Background from './Components/Background';
 import Introduction from './Components/Introduction';
 import AboutMe from './Components/AboutMe';
 import Projects from './Components/Projects';
@@ -17,7 +16,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="popLayout">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Navigate to="/introduction" replace />} />
         <Route path="/introduction" element={<Introduction />} />
@@ -37,8 +36,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="relative min-h-screen text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
-        <Background />
+      <div className="min-h-screen text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
         <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
         
         <Sidebar 

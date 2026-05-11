@@ -40,18 +40,18 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 30 },
+    hidden: { opacity: 0, scale: 0.95, y: 15 },
     visible: { 
       opacity: 1, 
       scale: 1, 
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.4, ease: "easeOut" }
     },
   };
 
@@ -59,7 +59,6 @@ const Projects = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="py-20 px-6 max-w-6xl mx-auto"
     >
       <motion.h2 
@@ -120,7 +119,7 @@ const Projects = () => {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 
