@@ -4,16 +4,16 @@ import { motion } from 'framer-motion';
 const Education = () => {
   const education = [
     {
-      degree: 'Bachelor of Computer Science',
-      institution: 'Global University of Technology',
-      period: '2018 - 2022',
-      grade: 'GPA: 3.8/4.0'
+      degree: 'Bachelor of Engineering in Information Technology',
+      institution: 'SSASIT, Surat',
+      period: '2022 - 2026',
+      grade: 'CGPA: 7.8/10.0'
     },
     {
       degree: 'Higher Secondary Education',
-      institution: 'City Public School',
-      period: '2016 - 2018',
-      grade: 'Score: 92%'
+      institution: 'Ashadeep Vidhyalaya 4',
+      period: '2020 - 2022',
+      grade: 'Score: 82%'
     }
   ];
 

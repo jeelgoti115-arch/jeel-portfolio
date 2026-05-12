@@ -4,16 +4,16 @@ import { motion } from 'framer-motion';
 const Experience = () => {
   const experiences = [
     {
-      role: 'Frontend Developer',
-      company: 'Tech Solutions Inc.',
-      period: '2022 - Present',
-      description: 'Developing high-performance web applications using React and Tailwind CSS. Collaborating with cross-functional teams to deliver quality features.'
+      role: 'Full Stack Web Developer',
+      company: 'Sensussoft Software Pvt. Ltd.',
+      period: 'January 2026 - April 2026',
+      description: 'Learned Developing full Web-application using Html, React.js, Tailwind CSS, Node.js, Express.js, Python. Here i got knowledge of different computer languages for developing Software.'
     },
     {
-      role: 'Web Development Intern',
-      company: 'Creative Labs',
-      period: '2021 - 2022',
-      description: 'Assisted in building responsive landing pages and integrating REST APIs. Gained hands-on experience with modern JavaScript frameworks.'
+      role: 'Python Delevelper with Django Intern',
+      company: 'BrainyBeam Technologies',
+      period: 'July-2025',
+      description: 'Learned to develop the backend of web-applications using python with django framework during the days of internship'
     }
   ];
 

@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Navbar = ({ onMenuClick }) => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date) => {
+    return date.toLocaleTimeString('en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Kolkata'
+    });
+  };
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -32,6 +51,10 @@ const Navbar = ({ onMenuClick }) => {
             Jeel Goti
           </motion.span>
         </Link>
+        <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-slate-900/50 rounded-full border border-slate-800/50 text-xs font-mono text-slate-300 ml-2">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
+          {formatTime(time)}
+        </div>
       </div>
       <div className="flex gap-6 items-center">
         {['Resume', 'GitHub', 'LinkedIn'].map((item, idx) => {
