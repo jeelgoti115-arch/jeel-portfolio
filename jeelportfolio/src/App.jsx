@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="min-h-screen text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+      <div className="min-h-screen text-slate-100 selection:bg-sky-500/30 selection:text-sky-200">
         <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
         
         <Sidebar 

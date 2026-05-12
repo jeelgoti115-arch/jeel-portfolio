@@ -13,12 +13,12 @@ const AboutMe = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-4xl font-bold text-white mb-12 text-center"
+        className="text-4xl md:text-5xl font-bold text-white mb-20 text-center"
       >
-        About Me
+        My <span className="text-gradient">Story</span>
       </motion.h2>
       
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-16 items-center">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -26,12 +26,12 @@ const AboutMe = () => {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="relative group"
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative aspect-square bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-800">
+          <div className="absolute -inset-4 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 rounded-3xl blur-2xl group-hover:opacity-100 transition duration-1000"></div>
+          <div className="relative aspect-square glass-card p-2 overflow-hidden shadow-2xl">
             <img 
               src="/aboutjeelimg.jpeg" 
               alt="Jeel Goti" 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
             />
           </div>
         </motion.div>
@@ -41,31 +41,30 @@ const AboutMe = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-8"
         >
-          <h3 className="text-2xl font-semibold text-slate-100">Who am I?</h3>
-          <p className="text-lg text-slate-400 leading-relaxed">
-            Passionate about leveraging technology to create impactful solutions, I am a Full Stack developer seeking a challenging opportunity to enhance my skills and contribute to achieving the goals of forward-thinking companies. I have 4 months of experience as intern student in the field. My journey began with internship training at Sensussoft software pvt. ltd., Surat, where I immersed myself in Front-End and Back-End technologies, mastering React.js and Node.js.
-          </p>
-          <p className="text-lg text-slate-400 leading-relaxed">
-            Seeking : A challenging role where I can apply my expertise and continue learning while contributing to the success of dynamic projects.
+          <div className="space-y-4">
+            <h3 className="text-3xl font-bold text-white">Full Stack Developer</h3>
+            <div className="h-1.5 w-20 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full"></div>
+          </div>
+          
+          <p className="text-lg text-slate-400 leading-relaxed font-light">
+            I am a passionate developer with a strong foundation in <span className="text-white font-medium">Modern Web Technologies</span>. My journey into the digital world is fueled by a desire to create seamless, high-performance applications that solve real-world problems.
           </p>
           
-          <div className="pt-4 flex gap-8">
-            <motion.div 
-              whileHover={{ scale: 1.1 }}
-              className="cursor-default"
-            >
-              <p className="text-indigo-400 font-bold text-2xl">4</p>
-              <p className="text-slate-500">Months Experience</p>
-            </motion.div>
-            <motion.div 
-              whileHover={{ scale: 1.1 }}
-              className="cursor-default"
-            >
-              <p className="text-indigo-400 font-bold text-2xl">0</p>
-              <p className="text-slate-500">Projects Completed</p>
-            </motion.div>
+          <p className="text-lg text-slate-400 leading-relaxed font-light">
+            With focused experience in <span className="text-white font-medium">React.js</span> and <span className="text-white font-medium">Node.js</span>, I bridge the gap between aesthetics and functionality, ensuring every project I touch is both beautiful and robust.
+          </p>
+          
+          <div className="grid grid-cols-2 gap-8 pt-4">
+            <div className="glass-card p-6 border-sky-500/10">
+              <p className="text-sky-400 font-bold text-3xl mb-1">4+</p>
+              <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Months Experience</p>
+            </div>
+            <div className="glass-card p-6 border-indigo-500/10">
+              <p className="text-indigo-400 font-bold text-3xl mb-1">5+</p>
+              <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Live Projects</p>
+            </div>
           </div>
         </motion.div>
       </div>

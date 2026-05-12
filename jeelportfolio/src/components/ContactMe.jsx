@@ -13,9 +13,9 @@ const ContactMe = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3 }}
-        className="text-4xl font-bold text-white mb-6"
+        className="text-4xl md:text-5xl font-bold text-white mb-8"
       >
-        Let's Connect
+        Get in <span className="text-gradient">Touch</span>
       </motion.h2>
       
       <motion.p 
@@ -23,9 +23,9 @@ const ContactMe = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3, delay: 0.1 }}
-        className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto"
+        className="text-xl text-slate-400 mb-16 max-w-2xl mx-auto font-light"
       >
-        I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, my inbox is always open!
+        I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
       </motion.p>
       
       <motion.div 
@@ -33,39 +33,26 @@ const ContactMe = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3, delay: 0.2 }}
-        className="flex flex-wrap justify-center gap-6 mb-12"
+        className="flex flex-wrap justify-center gap-6 mb-16"
       >
-        <motion.a 
-          whileHover={{ scale: 1.05, translateY: -5 }}
-          whileTap={{ scale: 0.95 }}
-          href="mailto:jeelgoti115@gmail.com" 
-          className="flex items-center gap-4 px-8 py-4 bg-slate-900 border border-slate-800 rounded-2xl hover:border-indigo-500 hover:text-indigo-400 transition-all font-semibold text-slate-300 group"
-        >
-          <img src="/mail.png" alt="Mail" className="w-6 h-6 object-contain group-hover:rotate-12 transition-transform" />
-          Mail
-        </motion.a>
-        <motion.a 
-          whileHover={{ scale: 1.05, translateY: -5 }}
-          whileTap={{ scale: 0.95 }}
-          href="https://www.linkedin.com/in/jeel-goti-b9a984280/" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-4 px-8 py-4 bg-slate-900 border border-slate-800 rounded-2xl hover:border-indigo-500 hover:text-indigo-400 transition-all font-semibold text-slate-300 group"
-        >
-          <img src="/linkedln.png" alt="LinkedIn" className="w-6 h-6 object-contain group-hover:rotate-12 transition-transform" />
-          LinkedIn
-        </motion.a>
-        <motion.a 
-          whileHover={{ scale: 1.05, translateY: -5 }}
-          whileTap={{ scale: 0.95 }}
-          href="https://github.com/jeelgoti115-arch" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-4 px-8 py-4 bg-slate-900 border border-slate-800 rounded-2xl hover:border-indigo-500 hover:text-indigo-400 transition-all font-semibold text-slate-300 group"
-        >
-          <img src="/github.png" alt="GitHub" className="w-6 h-6 object-contain group-hover:rotate-12 transition-transform" />
-          GitHub
-        </motion.a>
+        {[
+          { name: 'Email', icon: '/mail.png', href: 'mailto:jeelgoti115@gmail.com' },
+          { name: 'LinkedIn', icon: '/linkedln.png', href: 'https://www.linkedin.com/in/jeel-goti-b9a984280/' },
+          { name: 'GitHub', icon: '/github.png', href: 'https://github.com/jeelgoti115-arch' }
+        ].map((link) => (
+          <motion.a 
+            key={link.name}
+            whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            href={link.href} 
+            target={link.name !== 'Email' ? "_blank" : undefined}
+            rel={link.name !== 'Email' ? "noopener noreferrer" : undefined}
+            className="glass-card flex items-center gap-4 px-8 py-4 hover:border-sky-500/30 transition-all font-semibold text-slate-300 group"
+          >
+            <img src={link.icon} alt={link.name} className="w-5 h-5 object-contain grayscale group-hover:grayscale-0 transition-all" />
+            {link.name}
+          </motion.a>
+        ))}
       </motion.div>
 
       <motion.form 
@@ -73,29 +60,38 @@ const ContactMe = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.3 }}
-        className="max-w-xl mx-auto space-y-4 bg-slate-900 p-8 rounded-3xl shadow-2xl border border-slate-800"
+        className="max-w-xl mx-auto space-y-6 glass-card p-10 shadow-2xl"
       >
-        <div className="grid md:grid-cols-2 gap-4">
-          <input 
-            type="text" 
-            placeholder="Name" 
-            className="w-full px-5 py-3 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-indigo-500 outline-none placeholder:text-slate-500"
-          />
-          <input 
-            type="email" 
-            placeholder="Email" 
-            className="w-full px-5 py-3 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-indigo-500 outline-none placeholder:text-slate-500"
-          />
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-2 text-left">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Name</label>
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-sky-500/50 outline-none transition-all placeholder:text-slate-600"
+            />
+          </div>
+          <div className="space-y-2 text-left">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Email</label>
+            <input 
+              type="email" 
+              placeholder="your@email.com" 
+              className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-sky-500/50 outline-none transition-all placeholder:text-slate-600"
+            />
+          </div>
         </div>
-        <textarea 
-          placeholder="Message" 
-          rows="4" 
-          className="w-full px-5 py-3 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-indigo-500 outline-none placeholder:text-slate-500"
-        ></textarea>
+        <div className="space-y-2 text-left">
+          <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Message</label>
+          <textarea 
+            placeholder="Tell me about your project..." 
+            rows="5" 
+            className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-sky-500/50 outline-none transition-all placeholder:text-slate-600"
+          ></textarea>
+        </div>
         <motion.button 
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/20"
+          className="btn-primary w-full py-4 text-lg"
         >
           Send Message
         </motion.button>

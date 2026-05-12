@@ -27,38 +27,35 @@ const Experience = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-white mb-12 text-center"
+        className="text-4xl md:text-5xl font-bold text-white mb-20 text-center"
       >
-        Experience
+        Professional <span className="text-gradient">Experience</span>
       </motion.h2>
       
-      <div className="space-y-12">
+      <div className="space-y-10">
         {experiences.map((exp, index) => (
           <motion.div 
             key={index}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="relative pl-8 border-l-2 border-indigo-900"
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="relative pl-10 border-l-2 border-white/5"
           >
-            <motion.div 
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: (index * 0.1) + 0.15, type: "spring", stiffness: 200 }}
-              className="absolute -left-[9px] top-0 w-4 h-4 bg-indigo-500 rounded-full border-4 border-slate-950"
-            ></motion.div>
+            <div className="absolute -left-[9px] top-0 w-4 h-4 bg-sky-500 rounded-full border-4 border-slate-950 shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div>
             
-            <motion.div 
-              whileHover={{ x: 10 }}
-              className="bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-800 hover:border-indigo-500/30 transition-all group"
-            >
-              <span className="text-sm font-bold text-indigo-400 uppercase tracking-wider">{exp.period}</span>
-              <h3 className="text-xl font-bold text-slate-100 mt-1 group-hover:text-white transition-colors">{exp.role}</h3>
-              <p className="text-slate-500 font-medium mb-4">{exp.company}</p>
-              <p className="text-slate-400 leading-relaxed">{exp.description}</p>
-            </motion.div>
+            <div className="glass-card p-8 group">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">{exp.role}</h3>
+                  <p className="text-slate-500 font-medium text-lg mt-1">{exp.company}</p>
+                </div>
+                <span className="px-4 py-1.5 bg-sky-500/10 text-sky-400 text-xs font-bold rounded-full uppercase tracking-widest border border-sky-500/20 w-fit">
+                  {exp.period}
+                </span>
+              </div>
+              <p className="text-slate-400 leading-relaxed font-light text-lg">{exp.description}</p>
+            </div>
           </motion.div>
         ))}
       </div>

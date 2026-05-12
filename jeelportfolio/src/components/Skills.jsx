@@ -41,8 +41,9 @@ const Skills = () => {
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="text-2xl font-bold text-indigo-400 mb-8 border-l-4 border-indigo-400 pl-4"
+        className="text-2xl font-bold text-white mb-10 flex items-center gap-4"
       >
+        <span className="w-12 h-1 bg-gradient-to-r from-sky-400 to-transparent rounded-full"></span>
         {title}
       </motion.h3>
       <motion.div 
@@ -50,24 +51,19 @@ const Skills = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
       >
         {items.map((item) => (
           <motion.div 
             key={item.name}
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05, 
-              translateY: -10,
-              backgroundColor: "rgba(30, 41, 59, 0.8)",
-              boxShadow: "0 20px 25px -5px rgba(99, 102, 241, 0.2)"
-            }}
-            className="p-6 bg-slate-900/40 backdrop-blur-sm border border-slate-800/50 rounded-2xl shadow-xl transition-all flex flex-col items-center gap-4 group cursor-default"
+            whileHover={{ scale: 1.05 }}
+            className="glass-card p-6 flex flex-col items-center gap-4 group cursor-default"
           >
-            <div className="w-16 h-16 flex items-center justify-center p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300">
-              <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
+            <div className="w-14 h-14 flex items-center justify-center p-2 bg-white/5 rounded-xl group-hover:bg-white/10 transition-colors duration-300">
+              <img src={item.icon} alt={item.name} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
             </div>
-            <span className="font-semibold text-slate-300 text-center">{item.name}</span>
+            <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">{item.name}</span>
           </motion.div>
         ))}
       </motion.div>
@@ -78,19 +74,19 @@ const Skills = () => {
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="py-20 px-6 max-w-6xl mx-auto"
+      className="py-24 px-6 max-w-6xl mx-auto"
     >
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-white mb-16 text-center"
+        className="text-4xl md:text-5xl font-bold text-white mb-20 text-center"
       >
-        Skills & Tools
+        Technical <span className="text-gradient">Arsenal</span>
       </motion.h2>
       
-      <SkillSection title="Skills" items={skills} />
-      <SkillSection title="Tools" items={tools} />
+      <SkillSection title="Capabilities" items={skills} />
+      <SkillSection title="Workflow Tools" items={tools} />
     </motion.section>
   );
 };

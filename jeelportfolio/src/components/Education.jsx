@@ -42,9 +42,9 @@ const Education = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-white mb-12 text-center"
+        className="text-4xl md:text-5xl font-bold text-white mb-20 text-center"
       >
-        Education
+        Academic <span className="text-gradient">Background</span>
       </motion.h2>
       
       <motion.div 
@@ -52,26 +52,25 @@ const Education = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid md:grid-cols-2 gap-8"
+        className="grid md:grid-cols-2 gap-10"
       >
         {education.map((edu, index) => (
           <motion.div 
             key={index} 
             variants={itemVariants}
-            whileHover={{ y: -5 }}
-            className="bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-800 hover:shadow-indigo-500/10 transition-all"
+            className="glass-card p-10 group"
           >
-            <div className="w-12 h-12 bg-indigo-900/50 text-indigo-400 rounded-xl flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="w-14 h-14 bg-white/5 text-sky-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-sky-500/10 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 14l9-5-9-5-9 5 9 5z" />
                 <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">{edu.degree}</h3>
-            <p className="text-slate-400 font-medium mb-1">{edu.institution}</p>
-            <div className="flex justify-between items-center text-sm">
-              <span className="text-slate-600">{edu.period}</span>
-              <span className="text-indigo-400 font-semibold">{edu.grade}</span>
+            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors leading-tight">{edu.degree}</h3>
+            <p className="text-slate-400 font-medium mb-6 text-lg">{edu.institution}</p>
+            <div className="flex justify-between items-center pt-6 border-t border-white/5">
+              <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">{edu.period}</span>
+              <span className="text-sky-400 font-bold bg-sky-500/10 px-3 py-1 rounded-lg text-sm">{edu.grade}</span>
             </div>
           </motion.div>
         ))}

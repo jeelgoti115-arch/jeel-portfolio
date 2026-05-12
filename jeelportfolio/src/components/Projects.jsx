@@ -59,9 +59,9 @@ const Projects = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-white mb-12 text-center"
+        className="text-4xl md:text-5xl font-bold text-white mb-16 text-center"
       >
-        My Projects
+        Featured <span className="text-gradient">Projects</span>
       </motion.h2>
       
       <motion.div 
@@ -69,38 +69,49 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid md:grid-cols-3 gap-8"
+        className="grid md:grid-cols-2 lg:grid-cols-2 gap-10"
       >
         {projects.map((project, index) => (
           <motion.div 
             key={index} 
             variants={itemVariants}
-            whileHover={{ 
-              y: -15,
-              transition: { duration: 0.3 }
-            }}
-            className="group bg-slate-900/40 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 border border-slate-800/50 flex flex-col"
+            className="glass-card group flex flex-col overflow-hidden"
           >
-            <div className="p-8 flex-1 flex flex-col">
-              <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-indigo-400 transition-colors min-h-[3.5rem] flex items-center">{project.title}</h3>
-              <p className="text-slate-400 mb-6 min-h-[6rem] line-clamp-5">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-6 flex-1 content-start">
+            <div className="p-8 md:p-10 flex-1 flex flex-col">
+              <div className="flex justify-between items-start mb-6">
+                <div className="p-3 bg-sky-500/10 rounded-2xl border border-sky-500/20 group-hover:bg-sky-500/20 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <motion.a 
+                  whileHover={{ scale: 1.1 }}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-500 hover:text-white transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </motion.a>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-sky-400 transition-colors">
+                {project.title}
+              </h3>
+              
+              <p className="text-slate-400 mb-8 leading-relaxed font-light">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-slate-800 text-slate-400 text-xs font-bold rounded-full uppercase tracking-wider h-fit">
+                  <span key={tag} className="px-3 py-1 bg-white/5 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-widest border border-white/5">
                     {tag}
                   </span>
                 ))}
               </div>
-              <motion.a 
-                whileHover={{ x: 5 }}
-                href={project.link}
-                className="inline-flex items-center gap-2 text-indigo-400 font-bold transition-all"
-              >
-                View Project 
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </motion.a>
             </div>
           </motion.div>
         ))}

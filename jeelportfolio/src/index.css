@@ -1,14 +1,71 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --bg-primary: #030712;
+    --bg-secondary: #0f172a;
+    --accent-primary: #38bdf8;
+    --accent-secondary: #818cf8;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-slate-950 text-slate-100;
+    @apply text-slate-100;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
     background-image: 
-      radial-gradient(circle at 50% -20%, rgba(79, 70, 229, 0.15) 0%, transparent 60%),
-      radial-gradient(circle at 0% 100%, rgba(147, 51, 234, 0.05) 0%, transparent 40%),
-      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(129, 140, 248, 0.05) 0%, transparent 40%);
     background-attachment: fixed;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 
+           bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600
+           shadow-lg shadow-sky-500/20 hover:shadow-sky-500/40 transform hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300
+           border border-slate-700 hover:bg-slate-800 text-slate-200;
   }
 }
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
