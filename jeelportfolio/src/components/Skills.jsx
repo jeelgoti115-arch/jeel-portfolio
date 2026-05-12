@@ -7,11 +7,17 @@ const Skills = () => {
     { name: 'Tailwind CSS', icon: '/tailwind.png' },
     { name: 'React.js', icon: '/reactjs.png' },
     { name: 'JavaScript', icon: '/javascript.png' },
-    { name: 'Figma', icon: '/figma.png' },
-    { name: 'Git & GitHub', icon: '/github.png' },
     { name: 'Node.js', icon: '/nodejs.png' },
     { name: 'MongoDB', icon: '/mongodb.png' },
     { name: 'Python', icon: '/python.png' },
+  ];
+
+  const tools = [
+    { name: 'VS Code', icon: '/vscode.png' },
+    { name: 'Cursor', icon: '/cursor.png' },
+    { name: 'Antigravity', icon: '/antigravity.png' },
+    { name: 'Figma', icon: '/figma.png' },
+    { name: 'Git & GitHub', icon: '/github.png' },
   ];
 
   const containerVariants = {
@@ -29,21 +35,16 @@ const Skills = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  return (
-    <motion.section 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="py-20 px-6 max-w-6xl mx-auto"
-    >
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+  const SkillSection = ({ title, items }) => (
+    <div className="mb-20">
+      <motion.h3 
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-white mb-12 text-center"
+        className="text-2xl font-bold text-indigo-400 mb-8 border-l-4 border-indigo-400 pl-4"
       >
-        Skills and Tools
-      </motion.h2>
-      
+        {title}
+      </motion.h3>
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -51,9 +52,9 @@ const Skills = () => {
         viewport={{ once: true }}
         className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6"
       >
-        {skills.map((skill) => (
+        {items.map((item) => (
           <motion.div 
-            key={skill.name}
+            key={item.name}
             variants={itemVariants}
             whileHover={{ 
               scale: 1.05, 
@@ -64,12 +65,32 @@ const Skills = () => {
             className="p-6 bg-slate-900/40 backdrop-blur-sm border border-slate-800/50 rounded-2xl shadow-xl transition-all flex flex-col items-center gap-4 group cursor-default"
           >
             <div className="w-16 h-16 flex items-center justify-center p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300">
-              <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain" />
+              <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
             </div>
-            <span className="font-semibold text-slate-300">{skill.name}</span>
+            <span className="font-semibold text-slate-300 text-center">{item.name}</span>
           </motion.div>
         ))}
       </motion.div>
+    </div>
+  );
+
+  return (
+    <motion.section 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="py-20 px-6 max-w-6xl mx-auto"
+    >
+      <motion.h2 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-4xl font-bold text-white mb-16 text-center"
+      >
+        Skills & Tools
+      </motion.h2>
+      
+      <SkillSection title="Skills" items={skills} />
+      <SkillSection title="Tools" items={tools} />
     </motion.section>
   );
 };

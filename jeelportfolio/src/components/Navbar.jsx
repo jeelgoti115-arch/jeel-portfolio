@@ -23,11 +23,11 @@ const Navbar = ({ onMenuClick }) => {
         </motion.button>
         <Link 
           to="/"
-          className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent cursor-pointer"
+          className="cursor-pointer"
         >
           <motion.span
             whileHover={{ scale: 1.05 }}
-            className="inline-block"
+            className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block"
           >
             Jeel Goti
           </motion.span>
