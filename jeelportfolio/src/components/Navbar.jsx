@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ onMenuClick }) => {
   const [time, setTime] = useState(new Date());
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -56,30 +68,79 @@ const Navbar = ({ onMenuClick }) => {
           {formatTime(time)}
         </div>
       </div>
-      <div className="flex gap-8 items-center">
-        {['Resume', 'GitHub', 'LinkedIn'].map((item, idx) => {
-          const links = {
-            'Resume': '/jeel-goti-Resume.pdf',
-            'GitHub': 'https://github.com/jeelgoti115-arch',
-            'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
-          };
-          
-          return (
-            <motion.a 
-              key={item}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + (idx * 0.05) }}
-              href={links[item]} 
-              target={item !== 'Resume' ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className="text-sm text-slate-400 hover:text-white font-medium transition-all relative group"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 transition-all duration-300 group-hover:w-full"></span>
-            </motion.a>
-          );
-        })}
+      <div className="flex items-center gap-4">
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-8 items-center">
+          {['Resume', 'GitHub', 'LinkedIn'].map((item, idx) => {
+            const links = {
+              'Resume': '/jeel-goti-Resume.pdf',
+              'GitHub': 'https://github.com/jeelgoti115-arch',
+              'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
+            };
+            
+            return (
+              <motion.a 
+                key={item}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + (idx * 0.05) }}
+                href={links[item]} 
+                target={item !== 'Resume' ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="text-sm text-slate-400 hover:text-white font-medium transition-all relative group"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            );
+          })}
+        </div>
+
+        {/* Mobile Dropdown */}
+        <div className="md:hidden relative" ref={dropdownRef}>
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="p-2 hover:bg-white/5 rounded-xl transition-colors text-slate-400 border border-transparent hover:border-white/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </motion.button>
+
+          <AnimatePresence>
+            {dropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="absolute right-0 mt-2 w-48 rounded-2xl bg-slate-900 border border-white/10 shadow-2xl overflow-hidden py-2"
+              >
+                {['Resume', 'GitHub', 'LinkedIn'].map((item) => {
+                  const links = {
+                    'Resume': '/jeel-goti-Resume.pdf',
+                    'GitHub': 'https://github.com/jeelgoti115-arch',
+                    'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
+                  };
+                  return (
+                    <a
+                      key={item}
+                      href={links[item]}
+                      target={item !== 'Resume' ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="block px-6 py-3 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      {item}
+                    </a>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </motion.nav>
   );
