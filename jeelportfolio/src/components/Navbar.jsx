@@ -29,7 +29,7 @@ const Navbar = ({ onMenuClick }) => {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      hour12: false,
+      hour12: true,
       timeZone: 'Asia/Kolkata'
     });
   };
@@ -38,108 +38,129 @@ const Navbar = ({ onMenuClick }) => {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full bg-slate-950/60 backdrop-blur-xl shadow-2xl z-50 px-6 py-4 flex justify-between items-center border-b border-white/5"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 w-full z-50 px-4 py-2 flex justify-between items-center"
     >
-      <div className="flex items-center gap-4">
-        <motion.button 
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={onMenuClick}
-          className="p-2 hover:bg-white/5 rounded-xl transition-colors text-slate-400 border border-transparent hover:border-white/10"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </motion.button>
-        <Link 
-          to="/"
-          className="cursor-pointer"
-        >
-          <motion.span
-            whileHover={{ scale: 1.02 }}
-            className="text-2xl font-bold text-gradient inline-block tracking-tight"
-          >
-            Jeel Goti
-          </motion.span>
-        </Link>
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-full border border-white/10 text-[10px] font-mono text-slate-400 ml-4 uppercase tracking-widest">
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-          {formatTime(time)}
-        </div>
-      </div>
-      <div className="flex items-center gap-4">
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 items-center">
-          {['Resume', 'GitHub', 'LinkedIn'].map((item, idx) => {
-            const links = {
-              'Resume': '/jeel-goti-Resume.pdf',
-              'GitHub': 'https://github.com/jeelgoti115-arch',
-              'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
-            };
-            
-            return (
-              <motion.a 
-                key={item}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + (idx * 0.05) }}
-                href={links[item]} 
-                target={item !== 'Resume' ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="text-sm text-slate-400 hover:text-white font-medium transition-all relative group"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-500 transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            );
-          })}
-        </div>
-
-        {/* Mobile Dropdown */}
-        <div className="md:hidden relative" ref={dropdownRef}>
+      {/* Glass background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent backdrop-blur-xl border-b border-cyan-500/20"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 flex items-center gap-6 w-full justify-between">
+        {/* Left Section - Logo & Time */}
+        <div className="flex items-center gap-6">
           <motion.button 
-            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="p-2 hover:bg-white/5 rounded-xl transition-colors text-slate-400 border border-transparent hover:border-white/10"
+            onClick={onMenuClick}
+            className="p-2.5 rounded-xl transition-all text-cyan-400 border border-cyan-500/20 hover:border-cyan-500/50 group"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:text-cyan-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </motion.button>
 
-          <AnimatePresence>
-            {dropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-2 w-48 rounded-2xl bg-slate-900 border border-white/10 shadow-2xl overflow-hidden py-2"
-              >
-                {['Resume', 'GitHub', 'LinkedIn'].map((item) => {
-                  const links = {
-                    'Resume': '/jeel-goti-Resume.pdf',
-                    'GitHub': 'https://github.com/jeelgoti115-arch',
-                    'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
-                  };
-                  return (
-                    <a
-                      key={item}
-                      href={links[item]}
-                      target={item !== 'Resume' ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="block px-6 py-3 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-                      onClick={() => setDropdownOpen(false)}
-                    >
-                      {item}
-                    </a>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <Link 
+            to="/"
+            className="cursor-pointer"
+          >
+            <motion.div
+              className="flex flex-col"
+            >
+              <span className="text-2xl font-black bg-cyan-400 bg-clip-text text-transparent inline-block tracking-tighter">
+                Jeel Goti
+              </span>
+              <span className="text-xs font-bold text-cyan-400 tracking-widest">PORTFOLIO</span>
+            </motion.div>
+          </Link>
+
+          <div className="hidden lg:flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-cyan-500/20 text-[11px] font-mono text-cyan-300 ml-6 uppercase tracking-widest">
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1.5 h-1.5 rounded-full bg-green-400"
+            ></motion.div>
+            {formatTime(time)}
+          </div>
+        </div>
+
+        {/* Right Section - Links */}
+        <div className="flex items-center gap-2">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center">
+            {['Resume', 'GitHub', 'LinkedIn'].map((item, idx) => {
+              const links = {
+                'Resume': '/jeel-goti-Resume.pdf',
+                'GitHub': 'https://github.com/jeelgoti115-arch',
+                'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
+              };
+              
+              return (
+                <motion.a 
+                  key={item}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + (idx * 0.08) }}
+                  href={links[item]} 
+                  target={item !== 'Resume' ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 text-sm font-semibold text-slate-300 hover:text-cyan-300 transition-all relative group rounded-lg hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
+                  whileHover={{ y: -2 }}
+                >
+                  <span className="flex items-center gap-2">
+                    {item}
+                  </span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </motion.a>
+              );
+            })}
+          </div>
+
+          {/* Mobile Dropdown */}
+          <div className="md:hidden relative" ref={dropdownRef}>
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="p-2.5 hover:bg-cyan-500/10 rounded-xl transition-all text-cyan-400 border border-cyan-500/20 hover:border-cyan-500/50"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+              </svg>
+            </motion.button>
+
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-3 w-56 rounded-2xl backdrop-blur-xl bg-slate-900/80 border border-cyan-500/30 shadow-2xl overflow-hidden py-2"
+                >
+                  {['Resume', 'GitHub', 'LinkedIn'].map((item) => {
+                    const links = {
+                      'Resume': '/jeel-goti-Resume.pdf',
+                      'GitHub': 'https://github.com/jeelgoti115-arch',
+                      'LinkedIn': 'https://www.linkedin.com/in/jeel-goti-b9a984280/'
+                    };
+
+                    return (
+                      <motion.a
+                        key={item}
+                        whileHover={{ x: 4, backgroundColor: 'rgba(0, 217, 255, 0.1)' }}
+                        href={links[item]}
+                        target={item !== 'Resume' ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="block px-6 py-3.5 text-sm font-semibold text-slate-300 hover:text-cyan-300 transition-all flex items-center gap-3"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        {item}
+                      </motion.a>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.nav>

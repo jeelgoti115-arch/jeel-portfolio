@@ -25,26 +25,40 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.06,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 15, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
   };
 
-  const SkillSection = ({ title, items }) => (
-    <div className="mb-20">
+  const SkillSection = ({ title, items, icon }) => (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="mb-24"
+    >
       <motion.h3 
-        initial={{ opacity: 0, x: -20 }}
+        initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="text-2xl font-bold text-white mb-10 flex items-center gap-4"
+        transition={{ duration: 0.5 }}
+        className="text-3xl font-bold text-white mb-12 flex items-center gap-4"
       >
-        <span className="w-12 h-1 bg-gradient-to-r from-sky-400 to-transparent rounded-full"></span>
+        <span className="text-2xl">{icon}</span>
         {title}
+        <div className="flex-1 h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent rounded-full ml-2"></div>
       </motion.h3>
       <motion.div 
         variants={containerVariants}
@@ -57,36 +71,48 @@ const Skills = () => {
           <motion.div 
             key={item.name}
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="glass-card p-6 flex flex-col items-center gap-4 group cursor-default"
+            whileHover={{ y: -12, scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            className="glass-card p-6 flex flex-col items-center gap-4 group cursor-default border-cyan-500/20 hover:border-cyan-500/50"
           >
-            <div className="w-14 h-14 flex items-center justify-center p-2 bg-white/5 rounded-xl group-hover:bg-white/10 transition-colors duration-300">
-              <img src={item.icon} alt={item.name} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+            <div className="w-16 h-16 flex items-center justify-center p-3 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl group-hover:from-cyan-500/40 group-hover:to-purple-500/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-cyan-500/20">
+              <img 
+                src={item.icon} 
+                alt={item.name} 
+                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:drop-shadow-lg" 
+              />
             </div>
-            <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">{item.name}</span>
+            <span className="text-sm font-bold text-slate-300 group-hover:text-cyan-300 transition-colors text-center">
+              {item.name}
+            </span>
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   );
 
   return (
     <motion.section 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="py-24 px-6 max-w-6xl mx-auto"
+      className="py-24 px-6 max-w-7xl mx-auto relative"
     >
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold text-white mb-20 text-center"
+        transition={{ duration: 0.5 }}
+        className="text-center mb-20"
       >
-        Technical <span className="text-gradient">Arsenal</span>
-      </motion.h2>
+        <span className="inline-block text-sm font-bold text-cyan-400 tracking-widest mb-4 uppercase">EXPERTISE</span>
+        <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+          Technical <span className="text-gradient">Arsenal</span>
+        </h2>
+        <p className="text-lg text-slate-400 max-w-2xl mx-auto">Modern tools and technologies I use to build amazing digital experiences</p>
+      </motion.div>
       
-      <SkillSection title="Capabilities" items={skills} />
-      <SkillSection title="Workflow Tools" items={tools} />
+      <SkillSection title="Languages & Frameworks" items={skills} icon="⚙️" />
+      <SkillSection title="Development Tools" items={tools} icon="🛠️" />
     </motion.section>
   );
 };
