@@ -58,7 +58,7 @@ const Experience = () => {
       >
         <span className="inline-block text-sm font-bold text-cyan-400 tracking-widest mb-4 uppercase">JOURNEY</span>
         <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-          Professional <span className="text-gradient">Experience</span>
+          <span className="text-gradient">Experience</span>
         </h2>
       </motion.div>
       

@@ -11,19 +11,19 @@ const ContactMe = () => {
   const socialLinks = [
     { 
       name: 'Email', 
-      icon: '✉️', 
+      icon: '/mail.png', 
       href: 'mailto:jeelgoti115@gmail.com',
       color: 'from-red-500 to-pink-500'
     },
     { 
       name: 'LinkedIn', 
-      icon: '💼', 
+      icon: '/linkedln.png', 
       href: 'https://www.linkedin.com/in/jeel-goti-b9a984280/',
       color: 'from-blue-500 to-cyan-500'
     },
     { 
       name: 'GitHub', 
-      icon: '🐙', 
+      icon: '/github.png', 
       href: 'https://github.com/jeelgoti115-arch',
       color: 'from-purple-500 to-pink-500'
     }
@@ -77,7 +77,11 @@ const ContactMe = () => {
               animationDelay: `${idx * 0.1}s`
             }}
           >
-            <span className="text-2xl group-hover:scale-125 transition-transform">{link.icon}</span>
+            <img
+              src={link.icon}
+              alt={`${link.name} icon`}
+              className="w-8 h-8 object-contain group-hover:scale-125 transition-transform"
+            />
             <span>{link.name}</span>
           </motion.a>
         ))}
