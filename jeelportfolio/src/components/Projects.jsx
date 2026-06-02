@@ -65,9 +65,9 @@ const Projects = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <span className="inline-block text-sm font-bold text-cyan-400 tracking-widest mb-4 uppercase">MY WORK</span>
+        <span className="inline-block text-sm font-bold text-cyan-400 tracking-widest mb-4 uppercase">MY</span>
         <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-          Featured <span className="text-gradient">Projects</span>
+          <span className="text-gradient">Projects</span>
         </h2>
         <p className="text-lg text-slate-400 max-w-2xl mx-auto">Showcasing my latest work across different technologies and domains</p>
       </motion.div>

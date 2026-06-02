@@ -6,19 +6,9 @@ const AboutMe = () => {
     { value: '4', label: 'Months Experience', icon: '🚀' },
   ];
 
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/JEEL_GOTI_RESUME.pdf'; // Update with your actual resume filename
-    link.download = 'JEEL_GOTI_RESUME.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <motion.section 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}      animate={{ opacity: 1 }}
       className="py-24 px-6 max-w-7xl mx-auto overflow-hidden relative"
     >
       <motion.h2 
@@ -40,14 +30,14 @@ const AboutMe = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative group"
         >
-          <div className="absolute -inset-6 bg-gradient-to-br from-cyan-500/30 via-purple-500/30 to-pink-500/20 rounded-3xl blur-3xl group-hover:blur-2xl group-hover:opacity-100 opacity-60 transition-all duration-1000"></div>
+          <div className="absolute -inset-6 bg-linear-to-br from-cyan-500/30 via-purple-500/30 to-pink-500/20 rounded-3xl blur-3xl group-hover:blur-2xl group-hover:opacity-100 opacity-60 transition-all duration-1000"></div>
           <div className="relative aspect-square glass-card p-1 overflow-hidden shadow-2xl group-hover:shadow-cyan-500/20">
             <img 
               src="/aboutjeelimg.jpeg" 
               alt="Jeel Goti" 
               className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
             />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 rounded-2xl bg-linear-to-t from-black/20 via-transparent to-transparent"></div>
           </div>
         </motion.div>
         
@@ -82,7 +72,7 @@ const AboutMe = () => {
                 whileHover={{ y: -4 }}
                 className="glass-card p-6 border-cyan-500/30 hover:border-cyan-500/60"
               >
-                <p className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">{stat.value}</p>
+                <p className="text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">{stat.value}</p>
                 <p className="text-xs text-slate-400 uppercase tracking-widest font-bold">{stat.label}</p>
               </motion.div>
             ))}

@@ -23,7 +23,9 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Allow React/Motion JSX usage that ESLint's no-unused-vars sometimes misses
+      // Add 'motion' to the ignore pattern to avoid false positives when motion is only used in JSX
+      'no-unused-vars': ['error', { varsIgnorePattern: '^(motion|[A-Z_])' }],
     },
   },
 ])

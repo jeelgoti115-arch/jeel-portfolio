@@ -80,12 +80,12 @@ const Education = () => {
           >
             <div className={`glass-card p-10 h-full border-cyan-500/20 hover:border-cyan-500/50 relative overflow-hidden`}>
               {/* Top accent bar */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${edu.color}`}></div>
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-linear-to-r ${edu.color}`}></div>
 
               {/* Icon */}
               <motion.div 
                 whileHover={{ scale: 1.2, rotate: 10 }}
-                className={`w-16 h-16 bg-gradient-to-br ${edu.color} bg-opacity-20 rounded-2xl flex items-center justify-center mb-8 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all border border-white/10`}
+                className={`w-16 h-16 bg-linear-to-br ${edu.color} bg-opacity-20 rounded-2xl flex items-center justify-center mb-8 group-hover:shadow-lg group-hover:shadow-cyan-500/20 transition-all border border-white/10`}
               >
                 <span className="text-3xl">{edu.icon}</span>
               </motion.div>
@@ -105,7 +105,7 @@ const Education = () => {
                 </div>
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className={`inline-block bg-gradient-to-r ${edu.color} bg-opacity-20 text-cyan-300 px-6 py-3 rounded-full text-sm font-bold border border-cyan-500/30 w-fit`}
+                  className={`inline-block bg-linear-to-r ${edu.color} bg-opacity-20 text-cyan-300 px-6 py-3 rounded-full text-sm font-bold border border-cyan-500/30 w-fit`}
                 >
                   {edu.grade}
                 </motion.div>
